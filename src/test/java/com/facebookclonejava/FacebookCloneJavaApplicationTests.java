@@ -1,4 +1,4 @@
-package com.example.facebookclonejava;
+package com.facebookclonejava;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

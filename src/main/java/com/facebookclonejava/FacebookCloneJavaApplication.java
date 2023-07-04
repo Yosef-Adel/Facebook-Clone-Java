@@ -1,4 +1,4 @@
-package com.example.facebookclonejava;
+package com.facebookclonejava;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
