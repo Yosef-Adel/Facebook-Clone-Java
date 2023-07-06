@@ -6,6 +6,8 @@ package com.facebookclonejava.controller;
  * @author Yosef Adel Mahmoud Saaid
  */
 
+import com.facebookclonejava.models.User;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,9 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @GetMapping("/user")
-    public String userAuth(){
-        return "user Role ";
+    public String getUserData(Authentication authentication) {
+        System.out.println(((User) authentication.getPrincipal()));
+        return "User: " ;
     }
+
+//    @GetMapping("/user")
+//    public String userAuth(){
+//
+//
+//        return "user Role ";
+//    }
 
     @GetMapping("/admin")
     public String adminAuth(){

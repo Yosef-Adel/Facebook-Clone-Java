@@ -49,7 +49,6 @@ public class AuthenticationController {
             return ResponseEntity.ok(jwtUtil.generateToken(user));
         }
 
-
         // TODO change the type of the method and in case the username or pass is wrong throw exception
 
         return ResponseEntity.status(400).body("Email Or Pass IS wrong");
