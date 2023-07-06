@@ -56,9 +56,9 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(configurer ->
                 configurer
-                        .requestMatchers(HttpMethod.GET, "/api/v1/user").hasRole("USER")
-                        .requestMatchers(HttpMethod.POST, "/api/v1/admin").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
+                        .requestMatchers( "/api/v1/test/user").hasRole("USER")
+                        .requestMatchers( "/api/v1/test/admin").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/**").permitAll()
                         .requestMatchers("/error").permitAll()
 
         );

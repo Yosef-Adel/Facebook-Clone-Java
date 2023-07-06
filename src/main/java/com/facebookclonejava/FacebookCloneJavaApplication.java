@@ -24,7 +24,7 @@ public class FacebookCloneJavaApplication {
 
             userService.addRole(new Role("ROLE_ADMIN"));
 
-            userService.attachRoleToUser("yosef","ROLE_ADMIN" );
+            userService.attachRoleToUser("yosef@gmail.com","ROLE_ADMIN" );
 
 
 
