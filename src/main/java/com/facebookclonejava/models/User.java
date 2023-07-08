@@ -32,7 +32,7 @@ public class User {
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Collection<Role> roles = new ArrayList<Role>(Arrays.asList(new Role("ROLE_USER")));
+    private Collection<Role> roles ;//new ArrayList<Role>(Arrays.asList(new Role("ROLE_USER")));
 
 
 
@@ -76,6 +76,10 @@ public class User {
     public Collection<? extends GrantedAuthority> mapRolesToAuthorities() {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
 
+    }
+
+    public boolean isAdmin() {
+        return roles.stream().anyMatch(role -> role.getName().equals("ROLE_ADMIN"));
     }
 
 }

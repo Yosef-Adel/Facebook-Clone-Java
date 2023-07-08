@@ -18,16 +18,10 @@ public class TestController {
 
     @GetMapping("/user")
     public String getUserData(Authentication authentication) {
-        System.out.println(((User) authentication.getPrincipal()));
+        System.out.println(authentication.getPrincipal());
         return "User: " ;
     }
 
-//    @GetMapping("/user")
-//    public String userAuth(){
-//
-//
-//        return "user Role ";
-//    }
 
     @GetMapping("/admin")
     public String adminAuth(){

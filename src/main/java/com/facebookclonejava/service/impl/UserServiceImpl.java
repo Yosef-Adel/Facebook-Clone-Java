@@ -1,9 +1,10 @@
-package com.facebookclonejava.service;
+package com.facebookclonejava.service.impl;
 
 import com.facebookclonejava.dao.RoleDao;
 import com.facebookclonejava.dao.UserDao;
 import com.facebookclonejava.models.Role;
 import com.facebookclonejava.models.User;
+import com.facebookclonejava.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -23,14 +24,12 @@ import java.util.stream.Collectors;
  */
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService{
-
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
     private final RoleDao roleDao;
-
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public User findByEmail(String email) {
@@ -42,7 +41,9 @@ public class UserServiceImpl implements UserService{
         String pass = user.getPassword();
         String hashPass = passwordEncoder.encode(pass);
         user.setPassword(hashPass);
-        return userDao.addUser(user);
+        User newuser = userDao.addUser(user);
+        this.attachRoleToUser(user.getEmail(), "ROLE_USER");
+        return newuser;
     }
 
     @Override
@@ -53,6 +54,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public void attachRoleToUser(String email, String roleName) {
         Role r = roleDao.findRoleByName(roleName);
+        System.out.println("attachRoleToUser " + email);
         User u = userDao.findByEmail(email);
         u.addRole(r);
         userDao.updateUser(u);
@@ -64,8 +66,7 @@ public class UserServiceImpl implements UserService{
         if (user == null) {
             throw new UsernameNotFoundException("Invalid Email or password.");
         }
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
-                mapRolesToAuthorities(user.getRoles()));
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
 
 
     }

@@ -16,16 +16,17 @@ public class FacebookCloneJavaApplication {
     }
 
     @Bean
-    CommandLineRunner commandLineRunner (UserService userService){
+    CommandLineRunner commandLineRunner(UserService userService) {
         return args -> {
 
-            User user = new User("yosef" ,"yosef@gmail.com", "fun123");
+            userService.addRole(new Role("ROLE_USER"));
+            User user = new User("yosef", "yosef@gmail.com", "fun123");
+
             userService.addUser(user);
 
             userService.addRole(new Role("ROLE_ADMIN"));
 
-            userService.attachRoleToUser("yosef@gmail.com","ROLE_ADMIN" );
-
+            userService.attachRoleToUser("yosef@gmail.com", "ROLE_ADMIN");
 
 
         };

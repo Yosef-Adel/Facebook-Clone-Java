@@ -8,9 +8,9 @@ import com.facebookclonejava.models.Role;
  * @author Yosef Adel Mahmoud Saaid
  */
 public interface RoleDao {
-    public Role findRoleByName(String theRoleName);
+    Role findRoleByName(String theRoleName);
 
-    public Role addRole(Role role);
+    Role addRole(Role role);
 
-    public void deleteRole(Long id);
+    void deleteRole(Long id);
 }
