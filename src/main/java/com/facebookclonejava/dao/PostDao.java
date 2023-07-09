@@ -15,6 +15,8 @@ public interface PostDao {
 
     List<Post> getPostByUer(long id);
 
+    List<Post> getPostForTimeline(long id);
+
     Post getPostById(long id);
 
 

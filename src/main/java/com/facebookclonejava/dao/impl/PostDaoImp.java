@@ -47,6 +47,10 @@ public class PostDaoImp implements PostDao {
     }
 
     @Override
+    public List<Post> getPostForTimeline(long id) {
+        return postReporsitory.getTimelinePost(id);
+    }
+    @Override
     public Post getPostById(long id) {
         return postReporsitory.findById(id).orElseThrow();
     }

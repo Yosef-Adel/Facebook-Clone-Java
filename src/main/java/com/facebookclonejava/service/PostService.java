@@ -17,4 +17,9 @@ public interface PostService {
     Post updatePost(long id, PostRequest post, User user);
 
     List<Post> getPosts(long id);
+
+    List<Post> getPostsForTimeline(long id);
+
+    Post getPostById(long id);
+
 }

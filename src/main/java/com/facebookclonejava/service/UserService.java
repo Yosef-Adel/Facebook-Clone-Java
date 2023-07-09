@@ -15,6 +15,7 @@ public interface UserService extends UserDetailsService {
 
     User findById(Long id);
     User addUser(UserRequest user);
-    Role addRole(Role role);
+    void addRole(Role role);
+
     void attachRoleToUser(String userName, String roleName);
 }

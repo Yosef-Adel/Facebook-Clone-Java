@@ -1,5 +1,6 @@
 package com.facebookclonejava.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
@@ -23,6 +24,8 @@ public class Comment {
     private User user;
 
     @ManyToOne
+    @JsonIgnore
+    @ToString.Exclude
     @JoinColumn(name = "post_id")
     private Post post;
 

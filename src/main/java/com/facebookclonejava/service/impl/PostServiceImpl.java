@@ -25,8 +25,7 @@ public class PostServiceImpl implements PostService {
         Post newpost = new Post();
         newpost.setUser(user);
         newpost.setText(postRequest.getText());
-        Post post = postDaoImp.CreatePost(newpost);
-        return post;
+        return postDaoImp.CreatePost(newpost);
     }
 
     @Override
@@ -54,6 +53,16 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<Post> getPosts(long id) {
         return postDaoImp.getPostByUer(id);
+    }
+
+    @Override
+    public List<Post> getPostsForTimeline(long id) {
+        return postDaoImp.getPostForTimeline(id);
+    }
+
+    @Override
+    public Post getPostById(long id) {
+        return postDaoImp.getPostById(id);
     }
 
 

@@ -34,8 +34,19 @@ public class PostController {
         return postService.updatePost(id, postRequest, (User) authentication.getPrincipal());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/user/{id}")
     public List<Post> getUserPosts(@PathVariable(name = "id") Long id) {
         return postService.getPosts(id);
     }
+
+    @GetMapping("/timeline/{id}")
+    public List<Post> getPostsForTimeline(@PathVariable(name = "id") Long id) {
+        return postService.getPostsForTimeline(id);
+    }
+
+    @GetMapping("/{id}")
+    public Post getUserPost(@PathVariable(name = "id") Long id) {
+        return postService.getPostById(id);
+    }
+
 }
