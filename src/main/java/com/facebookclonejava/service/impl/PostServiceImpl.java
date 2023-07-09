@@ -1,7 +1,7 @@
 package com.facebookclonejava.service.impl;
 
 import com.facebookclonejava.controller.Request.PostRequest;
-import com.facebookclonejava.dao.PostDaoImp;
+import com.facebookclonejava.dao.impl.PostDaoImp;
 import com.facebookclonejava.exception.UnAuthrized;
 import com.facebookclonejava.models.Post;
 import com.facebookclonejava.models.User;

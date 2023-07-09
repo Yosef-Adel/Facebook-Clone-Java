@@ -1,6 +1,7 @@
 package com.facebookclonejava.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -8,6 +9,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 @Data
 @Table(name = "friendship")
 @IdClass(FriendshipId.class)
+@AllArgsConstructor
 public class Friendship {
 
 
@@ -25,4 +27,8 @@ public class Friendship {
 
     @NotNull
     private FriendStatus status;
+
+    public Friendship() {
+
+    }
 }

@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  */
 public interface UserService extends UserDetailsService {
     User findByEmail(String email);
+
+    User findById(Long id);
     User addUser(UserRequest user);
     Role addRole(Role role);
     void attachRoleToUser(String userName, String roleName);

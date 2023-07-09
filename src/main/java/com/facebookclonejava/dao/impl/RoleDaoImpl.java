@@ -1,5 +1,6 @@
-package com.facebookclonejava.dao;
+package com.facebookclonejava.dao.impl;
 
+import com.facebookclonejava.dao.RoleDao;
 import com.facebookclonejava.models.Role;
 import com.facebookclonejava.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class RoleDaoImpl implements RoleDao{
+public class RoleDaoImpl implements RoleDao {
 
     private final RoleRepository roleRepository;
     @Override

@@ -1,6 +1,7 @@
 package com.facebookclonejava.config;
 
 import com.facebookclonejava.dao.UserDao;
+import com.facebookclonejava.exception.ResourceNotFoundException;
 import com.facebookclonejava.models.User;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -47,7 +48,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         if (userName!=null && SecurityContextHolder.getContext().getAuthentication() == null){
 
-            User user =  userDao.findByEmail(userName);
+            User user =  userDao.findByEmail(userName).orElseThrow(()-> new ResourceNotFoundException("cutumear with email [%s] not found".formatted(userName)));
 
             if(jwtUtil.validateToken(jwtToken, user)){
 

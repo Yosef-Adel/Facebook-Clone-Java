@@ -1,6 +1,7 @@
-package com.facebookclonejava.dao;
+package com.facebookclonejava.dao.impl;
 
 import com.facebookclonejava.controller.Request.PostRequest;
+import com.facebookclonejava.dao.PostDao;
 import com.facebookclonejava.models.Post;
 import com.facebookclonejava.repository.PostReporsitory;
 import lombok.RequiredArgsConstructor;
