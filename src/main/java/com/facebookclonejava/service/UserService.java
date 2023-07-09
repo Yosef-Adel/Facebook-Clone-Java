@@ -1,5 +1,6 @@
 package com.facebookclonejava.service;
 
+import com.facebookclonejava.controller.Request.UserRequest;
 import com.facebookclonejava.models.Role;
 import com.facebookclonejava.models.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  */
 public interface UserService extends UserDetailsService {
     User findByEmail(String email);
-    User addUser(User user);
+    User addUser(UserRequest user);
     Role addRole(Role role);
     void attachRoleToUser(String userName, String roleName);
 }

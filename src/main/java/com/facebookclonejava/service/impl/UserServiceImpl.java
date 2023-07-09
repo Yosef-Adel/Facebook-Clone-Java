@@ -1,5 +1,6 @@
 package com.facebookclonejava.service.impl;
 
+import com.facebookclonejava.controller.Request.UserRequest;
 import com.facebookclonejava.dao.RoleDao;
 import com.facebookclonejava.dao.UserDao;
 import com.facebookclonejava.models.Role;
@@ -37,12 +38,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User addUser(User user) {
-        String pass = user.getPassword();
+    public User addUser(UserRequest request) {
+        String pass = request.getPassword();
         String hashPass = passwordEncoder.encode(pass);
-        user.setPassword(hashPass);
-        User newuser = userDao.addUser(user);
-        this.attachRoleToUser(user.getEmail(), "ROLE_USER");
+        request.setPassword(hashPass);
+        User newuser = userDao.addUser(new User(
+                request.getName(),
+                request.getEmail(),
+                request.getPassword()
+        ));
+        this.attachRoleToUser(request.getEmail(), "ROLE_USER");
         return newuser;
     }
 

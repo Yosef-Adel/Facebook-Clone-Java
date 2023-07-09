@@ -1,5 +1,6 @@
 package com.facebookclonejava;
 
+import com.facebookclonejava.controller.Request.UserRequest;
 import com.facebookclonejava.models.Role;
 import com.facebookclonejava.models.User;
 import com.facebookclonejava.service.UserService;
@@ -20,7 +21,8 @@ public class FacebookCloneJavaApplication {
         return args -> {
 
             userService.addRole(new Role("ROLE_USER"));
-            User user = new User("yosef", "yosef@gmail.com", "fun123");
+
+            UserRequest user = new UserRequest("yosef", "yosef@gmail.com", "fun123");
 
             userService.addUser(user);
 

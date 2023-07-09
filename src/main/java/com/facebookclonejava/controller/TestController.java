@@ -18,9 +18,10 @@ public class TestController {
 
     @GetMapping("/user")
     public String getUserData(Authentication authentication) {
-        System.out.println(authentication.getPrincipal());
-        return "User: " ;
+        System.out.println(((User) authentication.getPrincipal()));
+        return "User: "  ;
     }
+
 
 
     @GetMapping("/admin")

@@ -1,10 +1,11 @@
 package com.facebookclonejava.controller;
 
 import com.facebookclonejava.config.JwtUtil;
+import com.facebookclonejava.controller.Request.UserRequest;
+import com.facebookclonejava.controller.Response.LoginResponse;
 import com.facebookclonejava.models.User;
 import com.facebookclonejava.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,29 +29,18 @@ public class AuthenticationController {
     private final UserService userService;
 
     @PostMapping("/signup")
-    public User createUser(@RequestBody User user ){
-        return userService.addUser(user);
+    public User createUser(@RequestBody UserRequest request ){
+        return userService.addUser(request);
     }
 
 
-    @PostMapping("login")
-    public ResponseEntity<String> authenticate(
-            @RequestBody User requset
-    ){
+    @PostMapping("/login")
+    public LoginResponse login( @RequestBody UserRequest requset){
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(requset.getEmail(), requset.getPassword())
         );
-
         final User user = userService.findByEmail(requset.getEmail());
-
-        if(user!= null){
-
-            // TODO Add a res with the token
-            return ResponseEntity.ok(jwtUtil.generateToken(user));
-        }
-
-        // TODO change the type of the method and in case the username or pass is wrong throw exception
-
-        return ResponseEntity.status(400).body("Email Or Pass IS wrong");
+        String token = jwtUtil.generateToken(user);
+        return new LoginResponse(user, token);
     }
 }
