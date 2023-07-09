@@ -2,7 +2,6 @@ package com.facebookclonejava;
 
 import com.facebookclonejava.controller.Request.UserRequest;
 import com.facebookclonejava.models.Role;
-import com.facebookclonejava.models.User;
 import com.facebookclonejava.service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.facebookclonejava.models.FriendStatus.ACCEPTED;
 import static com.facebookclonejava.models.FriendStatus.PENDING;
 
 /*
